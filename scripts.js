@@ -52,13 +52,54 @@ class Person {
         console.log(`Hey! My name is ${this.name}. I am ${this.age} years old and live in ${this.city}.`);
     }
 }
-let person1 = new Person('Isabel', 'NSW', 19);
-person1.sayHello();
-let person2 = new Person('Justin', 'Birmingham', 36);
-person2.sayHello();
-let person3 = new Person('Joseph', 'Atlanta', 41);
-person3.sayHello();
-let person4 = new Person('Nadine', 'Dallas', 20);
-person4.sayHello();
-let person5 = new Person('Tom', 'Anaheim', 34);
-person5.sayHello();
+// let person1 = new Person('Isabel', 'NSW', 19);
+// person1.sayHello();
+// let person2 = new Person('Justin', 'Birmingham', 36);
+// person2.sayHello();
+// let person3 = new Person('Joseph', 'Atlanta', 41);
+// person3.sayHello();
+// let person4 = new Person('Nadine', 'Dallas', 20);
+// person4.sayHello();
+// let person5 = new Person('Tom', 'Anaheim', 34);
+// person5.sayHello();
+
+class Vehicle {
+    constructor(type, manufacturer, wheels) {
+        this.type = type;
+        this.manufacturer = manufacturer;
+        this.wheels = wheels;
+    }
+    aboutVehicle() {
+        console.log(`Vehicle type is ${this.type}, manufactured by ${this.manufacturer}. It has ${this.wheels} wheels.`);
+    }
+}
+class Truck extends Vehicle {
+    constructor(type, manufacturer, wheels, doors, bed) {
+        super(type, manufacturer, wheels);
+        this.doors = doors;
+        this.bed = bed;
+    }
+    aboutVehicle() {
+        let baseString = `Vehicle type is truck, manufactured by ${this.manufacturer}. It has ${this.wheels} wheels and ${this.doors} doors.`;
+        if (this.bed === true) {
+            baseString = (baseString + ' It has a truck bed.');
+            console.log(baseString);
+        } else {
+            console.log(baseString);
+        }
+    }
+}
+class Sedan extends Vehicle {
+    constructor(type, manufacturer, wheels, size, mpg) {
+        super(type, manufacturer, wheels);
+        this.size = size;
+        this.mpg = mpg;
+    }
+    aboutVehicle() {
+        console.log(`Vehicle type is sedan, manufactured by ${this.manufacturer}. It has ${this.wheels} wheels. Its size is ${this.size} and it gets ${this.mpg} miles to the gallon.`);
+    }
+}
+let sedan = new Sedan('sedan', 'Honda', 4, 'medium', 30);
+sedan.aboutVehicle();
+let truck = new Truck('truck', 'Toyota', 4, 2, true);
+truck.aboutVehicle();
