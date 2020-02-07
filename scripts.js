@@ -80,7 +80,7 @@ class Truck extends Vehicle {
         this.bed = bed;
     }
     aboutVehicle() {
-        let baseString = `Vehicle type is truck, manufactured by ${this.manufacturer}. It has ${this.wheels} wheels and ${this.doors} doors.`;
+        let baseString = `Vehicle type is ${this.type}, manufactured by ${this.manufacturer}. It has ${this.wheels} wheels and ${this.doors} doors.`;
         if (this.bed === true) {
             baseString = (baseString + ' It has a truck bed.');
             console.log(baseString);
@@ -96,10 +96,29 @@ class Sedan extends Vehicle {
         this.mpg = mpg;
     }
     aboutVehicle() {
-        console.log(`Vehicle type is sedan, manufactured by ${this.manufacturer}. It has ${this.wheels} wheels. Its size is ${this.size} and it gets ${this.mpg} miles to the gallon.`);
+        console.log(`Vehicle type is ${this.type}, manufactured by ${this.manufacturer}. It has ${this.wheels} wheels. Its size is ${this.size} and it gets ${this.mpg} miles to the gallon.`);
+    }
+}
+class Motorcycle extends Vehicle {
+    constructor(type, manufacturer, wheels, steering, doors) {
+        super(type, manufacturer, wheels);
+        this.steering = steering;
+        this.doors = doors;
+    }
+    aboutVehicle() {
+        let baseString = `Vehicle type is ${this.type}, manufactured by ${this.manufacturer}. It has ${this.wheels} wheels.`;
+        if (this.steering === 'bars' || this.steering === 'handlebars') {
+            baseString = baseString + ` It steers via ${this.steering}.`;
+        }
+        if (this.doors === 0 || this.doors === 'none') {
+            baseString = baseString + ` It has no doors (its a ${this.type}, duh).`;
+        }
+        console.log(baseString);
     }
 }
 let sedan = new Sedan('sedan', 'Honda', 4, 'medium', 30);
 sedan.aboutVehicle();
 let truck = new Truck('truck', 'Toyota', 4, 2, true);
 truck.aboutVehicle();
+let bike = new Motorcycle('motorcycle', 'Kawasaki', 2, 'handlebars', 'none');
+bike.aboutVehicle();
